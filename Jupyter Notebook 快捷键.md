@@ -1,5 +1,6 @@
 # Jupyter Notebook 快捷键
 ###命令模式 (按键 Esc 开启)
+
 Enter : 转入编辑模式
 
 Shift-Enter : 运行本单元，选中下个单元
@@ -83,6 +84,7 @@ Shift-Space : 向上滚动
 Space : 向下滚动
 
 ###编辑模式 ( Enter 键启动)
+
 Tab : 代码补全或缩进
 
 Shift-Tab : 提示
