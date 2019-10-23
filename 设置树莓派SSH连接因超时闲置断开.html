@@ -1,0 +1,49 @@
+<!DOCTYPE html><html><head><title>设置树莓派SSH连接因超时闲置断开</title><meta charset='utf-8'><link href='https://cdn.maxiang.io/res-min/themes/marxico.css' rel='stylesheet'><style></style></head><body><div id='preview-contents' class='note-content'>
+                        
+                    
+
+
+
+<h1 id="设置树莓派ssh连接因超时闲置断开">设置树莓派SSH连接因超时闲置断开</h1>
+
+
+
+<h4 id="在用ssh连接电脑时经常遇到长时间不操作而被服务器踢出的情况常见的提示如">在用SSH连接电脑时，经常遇到长时间不操作而被服务器踢出的情况，常见的提示如：</h4>
+
+<blockquote>
+  <p>write failed： broken </p>
+</blockquote>
+
+
+
+<h4 id="方案一在客户端设置">方案一：在客户端设置</h4>
+
+<p>在客户端电脑上：</p>
+
+<pre class="prettyprint hljs-dark"><code class="hljs awk"><div class="hljs-line">sudo vi <span class="hljs-regexp">/etc/</span>ssh<span class="hljs-regexp">/ssh_config</span>
+</div></code></pre>
+
+<p>在最后添加：</p>
+
+<blockquote>
+  <p>ServerAliveInterval  60 <br>
+  此后在该系统里的yoghurt连接SSH时，每60秒会发送一个KeepAlive的请求，避免被踢</p>
+</blockquote>
+
+
+
+<h4 id="方案二在服务器端设置">方案二：在服务器端设置</h4>
+
+<p>在服务器端口设置：</p>
+
+<pre class="prettyprint hljs-dark"><code class="hljs awk"><div class="hljs-line">sudo vi <span class="hljs-regexp">/etc/</span>ssh<span class="hljs-regexp">/sshd_config</span>
+</div></code></pre>
+
+<p>在最后添加：</p>
+
+<blockquote>
+  <p>ClientAliveInterval 60 <br>
+  重启SSH服务器后该项设置生效 <br>
+  /etc/init.d/sshd restart <br>
+  每一个连接到此服务器上的客户端都会收到影响。</p>
+</blockquote></div></body></html>
